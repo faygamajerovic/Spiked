@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+
+<div class="container my-5">
+    <div class="row row-cols-4">
+    {% for spirit in spirits %}
+      <div class="col">
+          
+        <div class="card">
+            <img src={{spirit.image.url}} class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{spirit.name}}</h5>
+              <p class="card-text">{{spirit.description}}</p>
+              <a href="#" class="btn btn-primary w-100">See More</a>
+            </div>
+          </div>
+      </div>
+
+    {% endfor %}
+
+ {% endblock content %}

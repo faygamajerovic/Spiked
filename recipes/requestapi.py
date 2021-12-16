@@ -10,8 +10,8 @@ def random_recipe():
     url = "https://the-cocktail-db.p.rapidapi.com/random.php"
 
     headers = {
-        'x-rapidapi-host': "the-cocktail-db.p.rapidapi.com",
-        'x-rapidapi-key': "1ba896e9a4mshe53ad1d4f1869c8p10ab9djsna6c21e629564"
+        'x-rapidapi-host': "replace host",
+        'x-rapidapi-key': "replace key"
         }
 
     response = requests.request("GET", url, headers=headers)

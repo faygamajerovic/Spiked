@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Create your own bartender! Give it a shot!</h1>
+<form method="POST" enctype="multipart/form-data">
+
+    <table>
+        {{ form }}
+    </table>
+    {% csrf_token %}
+    <button type="submit">Add to my Bar!</button>
+</form>
+
+{% endblock content %}

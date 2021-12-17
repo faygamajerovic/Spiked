@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http.response import HttpResponse
 from django.shortcuts import render
-from components.models import Spirit
+from components.models import Spirit, Glass
 
 # Create your views here.
 
@@ -17,6 +17,9 @@ def spirits(request):
     return render(request, 'spirits.html', context=context)
 
 
-
 def glasses(request):
-    return render(request)
+    query = Glass.objects.all()
+    context = {
+        "glasses": query
+    }
+    return render(request, 'glasses.html', context=context)

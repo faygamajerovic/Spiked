@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+
+
+.card {
+    background-color: #222222;
+    border-radius: 10px;
+    font-family: 'Manrope', sans-serif
+}
+
+h6,
+p,
+form {
+    color: #bbbaba;
+    font-size: 0.9rem
+}
+
+.form-control {
+    background-color: #222222;
+    border: 1px solid #545454
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #222222;
+    border: 0px;
+    outline: 0
+}
+
+.btn {
+    background-color: #5b72d8;
+    border-radius: 4px;
+    border: 0px
+}
+
+.btn:focus,
+.btn:hover {
+    background-color: #6d84ea;
+    border: 0px;
+    outline: none;
+    box-shadow: none
+}
+
+*:focus {
+    outline: none
+}

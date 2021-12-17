@@ -1,10 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
 
-</body>
-</html>
+{% block css %}
+
+	<link rel="stylesheet" href="{% static 'scss/dashboard.css' %}">
+ {% endblock css %}
+
+{% block content %}
+
+
+<body>
+     <div class="parent-container d-flex">
+         <div class="cardcontainer">
+             <div class="photo"> <img src="https://images.pexels.com/photos/1028637/pexels-photo-1028637.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+             </div>
+             <a class="content" href="{% url 'login' %}">
+                 <p class="txt4">My Favorites</p>
+             </a>
+         </div>
+         <div class="cardcontainer">
+             <div class="photo"> <img src="https://images.pexels.com/photos/800390/pexels-photo-800390.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+             </div>
+             <a class="content" href="{% url 'login' %}">
+                 <p class="txt4">My Recipes</p>
+             </a>
+         </div>
+     </div>
+ </body>
+
+{% endblock content %}
+
+{% block js %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+{% endblock js %}

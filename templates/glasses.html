@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+
+<div class="container my-5">
+    <div class="row row-cols-4">
+    {% for glass in glasses %}
+      <div class="col">
+          
+        <div class="card">
+            <img src={{glass.image.url}} class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{glass.name}}</h5>
+              <p class="card-text">{{glass.description}}</p>
+            </div>
+          </div>
+      </div>
+
+    {% endfor %}
+
+ {% endblock content %}

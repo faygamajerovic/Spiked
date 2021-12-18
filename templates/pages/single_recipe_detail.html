@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="card">
+            <img src={{recipe.thumbnail}} class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{recipe.name}}</h5>
+              <p class="card-text">{{recipe.glass}}</p>
+              <p class="card-text">{{recipe.instructions}}</p>
+
+              {% if recipe.ingredients %}
+
+              <h2>Ingredients:</h2>
+
+                <ul>
+                    {% for ingredient in recipe.ingredients.all%}
+                    <li>{{ingredient}}</li>
+                    {% endfor %}
+                </ul>
+
+              {% endif %}
+              
+            </div>
+          </div>
+    </div>
+</div>
+
+
+{% endblock content %}

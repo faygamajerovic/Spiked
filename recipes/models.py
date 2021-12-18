@@ -5,12 +5,16 @@ from django.db.models.aggregates import Max
 # Create your models here.
 
 
+class Query(models.Model):
+    search_string = models.CharField(max_length=255, null=True, blank=True, unique=True)
 
+    def __str__(self) -> str:
+        return self.search_string
     
 
 class Ingredient(models.Model):
 
-    name = models.CharField(max_length=255, null=True, blank=True)
+    name = models.CharField(max_length=255, null=True, blank=True, unique=True)
 
     def __str__(self) -> str:
         return self.name
@@ -29,11 +33,13 @@ class Recipe(models.Model):
     thumbnail = models.CharField(max_length=500, null=True, blank=True)
 
     ingredients = models.ManyToManyField(Ingredient, related_name="recipes")
+    
 
-    profiles = models.ManyToManyField(Profile)
+    is_completed = models.BooleanField(null=True, default=False)
+
 
     def __str__(self) -> str:
-        return self.name
+        return str(self.api_recipe_id)+ "  |  " +self.name
 
 
 class UserRecipe(models.Model):
@@ -43,7 +49,7 @@ class UserRecipe(models.Model):
     glass = models.CharField(max_length=255, null=True, blank=True)
     ingredients = models.ManyToManyField(Ingredient, related_name="user_recipes")
     instructions = models.TextField(null=True, blank=True)
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="my_recipes")
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="my_recipes", null=True)
 
     def __str__(self) -> str:
         return self.name

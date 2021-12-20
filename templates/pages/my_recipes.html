@@ -1,19 +1,25 @@
 {% extends "base.html" %}
+{% load static %}
 
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+
+{% endblock css %}
 {% block content %}
 
 
 
-<div class="container">
+<div class="re-container">
     <div class="row">
-        {% for recipe in user.profile.my_recipes.all %}
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <img src={{user_recipe.thumbnail}} class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h4 class="card-title">{{recipe.name}}</h4>
-                  <h4 class="card-title">{{recipe.glass}}</h4>
-                  <h4 class="card-title">{{recipe.instructions}}</h4>
+    {% for recipe in user.profile.my_recipes.all %}
+    <div class="col-md-4 col-sm-6 content-card">
+        <div class="card-big-shadow">
+            <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                <div class="content">
+                    <h4 class="card-title">{{recipe.name}}</h4>
+                  <h4 class="card-title">Glass: {{recipe.glass}}</h4>
+                  <h4 class="card-title">Instructions: {{recipe.instructions}}</h4>
 
                   <p><b>Ingredients:</b></p>
                   {% for ingredient in recipe.ingredients.all %}
@@ -25,6 +31,8 @@
               </div>
         </div>
         {% endfor %}
+</div>
+</div>
     </div>
 <div class="d-grid gap-2 col-6 mx-auto">
     <a class="btn btn-dark" href="{% url 'user_recipe' %}" role="button">Create Recipe</a>

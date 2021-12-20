@@ -6,40 +6,29 @@
 
 <div class="container">
     <div class="row">
-
-
-        {% for recipe in recipes %}
-        
+        {% for recipe in user.profile.my_recipes.all %}
         <div class="col">
             <div class="card" style="width: 18rem;">
-                <img src={{recipe.thumbnail}} class="card-img-top" alt="...">
+                <img src={{user_recipe.thumbnail}} class="card-img-top" alt="...">
                 <div class="card-body">
                   <h4 class="card-title">{{recipe.name}}</h4>
+                  <h4 class="card-title">{{recipe.glass}}</h4>
+                  <h4 class="card-title">{{recipe.instructions}}</h4>
 
                   <p><b>Ingredients:</b></p>
                   {% for ingredient in recipe.ingredients.all %}
-                  <p>{{ingredient.name}}</p>  
+                    <p>{{ingredient.name}}</p>
                   {% endfor %}
 
-
-                  <div class="actions d-flex justify-content-between">
-                    <a href={% url 'single_recipe' id=recipe.id %} class="btn btn-info w-100">View Recipe</a>
-
-
-                    <a href={% url 'favorite_add' id=recipe.id %} class="btn btn-danger like">+</a>
-
-
+                     </div>
                   </div>
-                  
-                </div>
               </div>
         </div>
-
         {% endfor %}
-
-
-
     </div>
+<div class="d-grid gap-2 col-6 mx-auto">
+    <a class="btn btn-dark" href="{% url 'user_recipe' %}" role="button">Create Recipe</a>
+</div>
 </div>
 
 

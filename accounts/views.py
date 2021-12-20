@@ -1,7 +1,11 @@
-from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from .models import Profile
+from recipes.models import Recipe
+from.forms import RegistrationForm
 
 # Create your views here.
 
@@ -9,15 +13,17 @@ from django.contrib.auth.forms import UserCreationForm
 def register(request):
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
+            return redirect('login')
         else:
             return render(request, 'accounts/register.html', {'form': form})
 
-
     else:
         return render(request, 'accounts/register.html')
+
+
 
 
 def login(request):
@@ -45,3 +51,20 @@ def logout(request):
     if request.method == "POST":
         auth.logout(request)
         return redirect('home')
+
+
+@login_required
+def favorite_add(request, id):
+    recipe = get_object_or_404(Recipe, id=id)
+    if recipe in request.user.profile.favorites.all():
+        recipe.favorites.remove(request.user.profile)
+    else:
+        recipe.favorites.add(request.user.profile)
+    return redirect('dashboard')
+
+
+@login_required
+def favorite_list(request):
+
+    return render(request, 'accounts/favorites.html',)
+

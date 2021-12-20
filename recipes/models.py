@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from accounts.models import Profile
 from django.db.models.aggregates import Max
@@ -33,7 +34,8 @@ class Recipe(models.Model):
     thumbnail = models.CharField(max_length=500, null=True, blank=True)
 
     ingredients = models.ManyToManyField(Ingredient, related_name="recipes")
-    
+
+    favorites = models.ManyToManyField(Profile, default=None, blank=True, related_name="favorites")
 
     is_completed = models.BooleanField(null=True, default=False)
 

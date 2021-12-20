@@ -8,7 +8,7 @@
     <div class="row">
 
 
-        {% for recipe in recipes %}
+        {% for recipe in user.profile.favorites.all %}
         
         <div class="col">
             <div class="card" style="width: 18rem;">
@@ -26,9 +26,7 @@
                     <a href={% url 'single_recipe' id=recipe.id %} class="btn btn-info w-100">View Recipe</a>
 
 
-                    <a href={% url 'favorite_add' id=recipe.id %} class="btn btn-danger like">+</a>
-
-
+                    <a href={% url 'favorite_add' id=recipe.id  %} class="btn btn-danger like">+</a>
                   </div>
                   
                 </div>

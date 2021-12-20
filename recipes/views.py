@@ -1,6 +1,10 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.db import IntegrityError
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView
+from requests import request
+
 from recipes.helper import ingredients_processor
 from .models import Ingredient, Query, Recipe, UserRecipe
 from.forms import RecipeForm
@@ -166,9 +170,20 @@ def user_recipe(request):
     if request.method == "POST":
         form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            new_recipe = form.save()
+            new_recipe.profile = request.user.profile
+            new_recipe.save()
+            return redirect('user_recipes')
+        else:
+            return render(request, 'pages/newrecipe.html', {'form': form})
 
-            return redirect('dashboard')
     else:
         form = RecipeForm()
     return render(request, 'pages/newrecipe.html', {'form': form})
+
+
+def myrecipe_list(request):
+
+    return render(request, 'pages/my_recipes.html',)
+
+

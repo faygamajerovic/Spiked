@@ -80,8 +80,7 @@ def search_by_ingredients_in_api(ingredient_list):
             continue
 
         else:
-            recipe = Recipe(api_recipe_id=api_drink_id,
-                                name=name, thumbnail=image)
+            recipe = Recipe(api_recipe_id=api_drink_id, name=name, thumbnail=image)
 
             recipe.save()
 
@@ -122,8 +121,6 @@ def list_recipes(request):
 
     # print(ingredient1, ingredient2, ingredient3)
 
-    #rum, lemon, whisky
-
     ingredient_list = []
 
     if ingredient1 is not "":
@@ -138,7 +135,7 @@ def list_recipes(request):
     ingredient_list = [str(ingredient).capitalize()
                        for ingredient in ingredient_list]
 
-    print(ingredient_list)
+    # print(ingredient_list)
 
     # query = Recipe.objects.filter(ingredients__name__in=ingredient_list).distinct('name')
     # query = Recipe.objects.filter()
@@ -146,44 +143,27 @@ def list_recipes(request):
     if search_query is not None:
         query_results = Recipe.objects.filter(name__contains=search_query)
 
-
-
     elif ingredient1 is not None or ingredient2 is not None or ingredient3 is not None:
 
         try:
-
-
             query_results = Recipe.objects.filter(
                     ingredients__name__in=ingredient_list)
 
             if len(query_results) == 0:
-                print("Yes not found in the db go for api")
-
+                # print("Yes not found in the db go for api")
                 search_by_ingredients_in_api(ingredient_list=ingredient_list)
-
-
-
                 return redirect(request.get_full_path())
             # return redirect()
         except AttributeError as e:
             pass
-            
 
-        
-
-
-
-
-        
     else:
         query_results = Recipe.objects.filter()
 
-    
     context = {
         "recipes": query_results
     }
     return render(request, "pages/list_recipes.html", context=context)
-
 
 
 def user_recipe(request):
@@ -214,7 +194,7 @@ def random_recipe(request):
     data = random_recipe()
     drinks = data.get("drinks")[0]
 
-    print("Here", drinks)
+    # print("Here", drinks)
 
     ingredients_list = ingredients_processor(drinks)
 
@@ -247,7 +227,7 @@ def random_recipe(request):
 
     # new_recipe.ingredients.add(*list_of_ingredients_objects)
 
-    print(api_recipe_id, name, glass, instructions)
+    # print(api_recipe_id, name, glass, instructions)
 
     context = {
         "recipe": new_recipe

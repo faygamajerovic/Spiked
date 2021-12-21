@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from django.contrib.messages import constants as messages
 from pathlib import Path
 import os
-# import django_heroku
+import django_heroku
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,25 +83,25 @@ WSGI_APPLICATION = 'spiked.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # POSTGRES
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'spiked',
-#         'USER': 'postgres',
-#         'PASSWORD': 'whatever',
-#         'HOST': 'localhost'
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'spiked',
+        'USER': 'postgres',
+        'PASSWORD': 'whatever',
+        'HOST': 'localhost'
 
-#     }
-# }
+    }
+}
 
 
 # Password validation
@@ -156,4 +157,4 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())

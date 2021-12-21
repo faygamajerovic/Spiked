@@ -1,2 +1,2 @@
 web: gunicorn spiked.wsgi
-release: py manage.py migrate
+release: python manage.py migrate

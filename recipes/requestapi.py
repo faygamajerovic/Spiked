@@ -69,6 +69,8 @@ def full_cocktail_details(drink_id):
 # data = full_cocktail_details(11007)
 
 # drinks = data.get("drinks")[0]
-data = filter_by_ingredients(['rum', 'lemon juice'])
+data = filter_by_ingredients(['Grape'])
 
 print(data)
+
+

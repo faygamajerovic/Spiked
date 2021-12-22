@@ -2,14 +2,15 @@
 
 {% block content %}
 
-<h1>Create your own bartender! Give it a shot!</h1>
+<h1 style="text-align: center">Be your own bartender! Give it a shot!</h1>
+<div class="container bg-info" style="width: 50vw">
+<div class="form-group">
 <form method="POST" enctype="multipart/form-data">
-
-    <table>
-        {{ form }}
-    </table>
     {% csrf_token %}
+        {{ form.as_p }}
     <button type="submit">Add to my Bar!</button>
 </form>
+    </div>
+</div>
 
 {% endblock content %}

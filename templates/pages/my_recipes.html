@@ -3,39 +3,39 @@
 
 {% block css %}
 
-<link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+<link rel="stylesheet" href="{% static 'css/cards.css' %}">
 
 {% endblock css %}
 {% block content %}
 
 
 
-<div class="re-container">
+<div class="re-container" >
     <div class="row">
     {% for recipe in user.profile.my_recipes.all %}
-    <div class="col-md-4 col-sm-6 content-card">
+    <div class="col-md-4 content-card">
         <div class="card-big-shadow">
-            <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
-                <div class="content">
-                    <h4 class="card-title">{{recipe.name}}</h4>
-                  <h4 class="card-title">Glass: {{recipe.glass}}</h4>
-                  <h4 class="card-title">Instructions: {{recipe.instructions}}</h4>
-
-                  <p><b>Ingredients:</b></p>
+            <div class="card card-just-text" style="padding: 10px" data-background="color" data-color="blue" data-radius="none">
+                <div class="content" style="overflow-y: auto">
+                    <h4 class="card-title new">{{recipe.name}}</h4>
+                     <img src={{recipe.pic}} class="pic card-img-top" alt="...">
+                    <h5 class="card-text text-sm-start"><b>Glass:</b> {{recipe.glass}}</h5>
+                    <p><b>Ingredients:</b></p>
                   {% for ingredient in recipe.ingredients.all %}
                     <p>{{ingredient.name}}</p>
                   {% endfor %}
-
+                    <p class="card-title">Instructions: {{recipe.instructions}}</p>
                      </div>
                   </div>
               </div>
         </div>
         {% endfor %}
+
 </div>
 </div>
     </div>
 <div class="d-grid gap-2 col-6 mx-auto">
-    <a class="btn btn-dark" href="{% url 'user_recipe' %}" role="button">Create Recipe</a>
+    <a class="btn create" style="padding: 20px; margin: 30px" href="{% url 'user_recipe' %}" role="button">Create Recipe</a>
 </div>
 </div>
 

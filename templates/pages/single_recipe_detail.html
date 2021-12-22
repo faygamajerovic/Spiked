@@ -3,29 +3,24 @@
 {% block content %}
 
 
-<div class="container">
+<div class="container" style="margin-top:20px; margin-bottom:20px">
 
-    <div class="row">
-        <div class="card">
+        <div class="card  d-block mx-auto" style="width: 20rem;">
             <img src={{recipe.thumbnail}} class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{recipe.name}}</h5>
-              <p class="card-text">{{recipe.glass}}</p>
-              <p class="card-text">{{recipe.instructions}}</p>
-
-              {% if recipe.ingredients %}
-
+              <p class="card-text">Glass: {{recipe.glass}}</p>
+                {% if recipe.ingredients %}
               <h2>Ingredients:</h2>
-
                 <ul>
                     {% for ingredient in recipe.ingredients.all%}
                     <li>{{ingredient}}</li>
                     {% endfor %}
                 </ul>
-
               {% endif %}
+                <p class="card-text">{{recipe.instructions}}</p>
               
-            </div>
+
           </div>
     </div>
 </div>

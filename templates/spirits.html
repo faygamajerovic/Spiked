@@ -1,25 +1,35 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static %}
 
+{% block css %}
 
+<link rel="stylesheet" href="{% static 'css/cards.css' %}">
+
+{% endblock css %}
 {% block content %}
 
 
 
-<div class="container my-5">
-    <div class="row row-cols-4">
+<div class="re-container" style="margin-left: 30px; margin-right: 30px">
+    <div class="row">
     {% for spirit in spirits %}
-      <div class="col">
-          
-        <div class="card">
-            <img src={{spirit.image.url}} class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{spirit.name}}</h5>
-              <p class="card-text">{{spirit.description}}</p>
-              <a href="#" class="btn btn-primary w-100">See More</a>
-            </div>
-          </div>
-      </div>
+    <div class="col-md-4 col-sm-6 content-card">
+        <div class="card-big-shadow">
+            <div class="card card-just-text" data-background="color" data-color="orange" data-radius="none">
+                <div class="content">
+                    <h4 class="card-title">{{spirit.name}}</h4>
+                  <p class="card-text">{{spirit.description}}</p>
+                </div>
+                  </div>
+              </div>
+        </div>
+ {% endfor %}
+</div>
+</div>
 
-    {% endfor %}
 
- {% endblock content %}
+
+
+
+{% endblock content %}
+

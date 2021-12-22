@@ -1,0 +1,36 @@
+.pic {
+    height: 250px;
+    }
+.card-custom {
+  overflow: hidden;
+  min-height: 450px;
+  box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+  width: 350px;
+
+}
+
+
+.card-custom {
+  overflow: hidden;
+  min-height: 450px;
+  box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+}
+
+
+.card-footer{
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    border-top-width: 0px;
+    border-top-style: none;
+    background-color: white;
+    background-size: cover
+    }
+
+
+
+
+
+
+

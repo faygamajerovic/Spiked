@@ -60,7 +60,7 @@ def favorite_add(request, id):
         recipe.favorites.remove(request.user.profile)
     else:
         recipe.favorites.add(request.user.profile)
-    return redirect('dashboard')
+    return redirect('favorite_list')
 
 
 @login_required

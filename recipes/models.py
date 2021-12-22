@@ -47,7 +47,7 @@ class Recipe(models.Model):
 class UserRecipe(models.Model):
 
     name = models.CharField(max_length=255, null=True, blank=True)
-    thumbnail = models.ImageField(upload_to='photos/%Y/%m/%d')
+    image = models.ImageField(null=True, upload_to='pictures/')
     glass = models.CharField(max_length=255, null=True, blank=True)
     ingredients = models.ManyToManyField(Ingredient, related_name="user_recipes")
     instructions = models.TextField(null=True, blank=True)
@@ -55,3 +55,8 @@ class UserRecipe(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+    def pic(self):
+        if self.image:
+            return self.image.url
+        return "https://images.pexels.com/photos/3323682/pexels-photo-3323682.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"

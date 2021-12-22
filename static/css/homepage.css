@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
 
 
+
 .card {
-    background-color: #222222;
+    background-color: #fdf293;
     border-radius: 10px;
     font-family: 'Manrope', sans-serif
 }
@@ -42,4 +43,10 @@ form {
 
 *:focus {
     outline: none
+}
+
+.card {
+    background-color: #fdf293;
+    border-radius: 10px;
+    font-family: 'Manrope', sans-serif
 }

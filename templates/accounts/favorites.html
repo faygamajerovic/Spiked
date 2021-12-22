@@ -1,34 +1,39 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'css/listrecipes.css' %}">
+<!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" />-->
+
+{% endblock css %}
+
 {% block content %}
 
 
 
-<div class="container">
-    <div class="row">
-
+<div class="container mx-auto">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
 
         {% for recipe in user.profile.favorites.all %}
-        
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <img src={{recipe.thumbnail}} class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h4 class="card-title">{{recipe.name}}</h4>
+            <div class="col">
+                <div class="card card-custom bg-white border-white border-0" style="height: 450px">
 
-                  <p><b>Ingredients:</b></p>
-                  {% for ingredient in recipe.ingredients.all %}
-                  <p>{{ingredient.name}}</p>  
-                  {% endfor %}
-
-
-                  <div class="actions d-flex justify-content-between">
+                    <img src={{recipe.thumbnail}} class="pic card-img-top" alt="...">
+                    <div class="card-body" style="overflow-y: auto">
+                        <h4 class="card-title">{{recipe.name}}</h4>
+                        <p><b>Ingredients:</b></p>
+                        {% for ingredient in recipe.ingredients.all %}
+                        <p>{{ingredient.name}}</p>
+                        {% endfor %}
+                        <div>
+                <div class="actions d-flex justify-content-between card-footer" style="background: inherit; border-color: inherit;">
                     <a href={% url 'single_recipe' id=recipe.id %} class="btn btn-info w-100">View Recipe</a>
-
-
-                    <a href={% url 'favorite_add' id=recipe.id  %} class="btn btn-danger like">+</a>
+                    <a href={% url 'favorite_add' id=recipe.id %} class="btn btn-danger like"><i class="far fa-heart"></i></a>
+                      </div>
                   </div>
-                  
+
                 </div>
               </div>
         </div>
